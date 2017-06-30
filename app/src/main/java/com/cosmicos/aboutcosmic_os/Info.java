@@ -12,14 +12,19 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Info extends AppCompatActivity {
-    TextView mMainDevice, mName;
+    TextView mMainDevice, mName,mChangelog;
     FloatingActionButton mLink;
     ImageView mGit,mGplus,mTelegram,mWeb;
     de.hdodenhof.circleimageview.CircleImageView dp;
     CoordinatorLayout rootInfo;
 
     String [] device = {"yureka","yuphoria","bullhead", "wbl7511", "op3", "kenzo","a6000","opx","j5","z2plus","cosmic"};
+    private static final String CHANGELOG_PATH = "/system/etc/Changelog.txt";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +33,7 @@ public class Info extends AppCompatActivity {
         setContentView(R.layout.info);
         rootInfo = (CoordinatorLayout) findViewById(R.id.root_info);
         mName = (TextView) findViewById(R.id.name);
+        mChangelog = (TextView)findViewById(R.id.changelog);
         mMainDevice = (TextView) findViewById(R.id.device);
         dp = (de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.profile_image);
         mGit = (ImageView) findViewById(R.id.git);
@@ -370,6 +376,32 @@ public class Info extends AppCompatActivity {
                 mLink.setVisibility(View.GONE);
             }
         }
+
+        //Implementation to display changelog
+        InputStreamReader inputReader = null;
+        String text = null;
+
+        try {
+            StringBuilder data = new StringBuilder();
+            char tmp[] = new char[2048];
+            int numRead;
+
+            inputReader = new FileReader(CHANGELOG_PATH);
+            while ((numRead = inputReader.read(tmp)) >= 0) {
+                data.append(tmp, 0, numRead);
+            }
+            text = data.toString();
+        } catch (IOException e) {
+            text = getString(R.string.changelog_error);
+        } finally {
+            try {
+                if (inputReader != null) {
+                    inputReader.close();
+                }
+            } catch (IOException ignored) {
+            }
+        }
+        mChangelog.setText(text);
     }
 
 }

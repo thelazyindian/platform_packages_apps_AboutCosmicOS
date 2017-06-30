@@ -58,4 +58,10 @@
     <string name="Maintainer_OPX">Maintainer/OPX</string>
     <string name="Maintainer_Z2Plus">Maintainer/Z2 Plus</string>
     <string name="cos">COSMIC-OS</string>
+    <string name="changelog_title">Changelog</string>
+    <string name="changelog_summary">Since the last update</string>
+    <string name="changelog_error">Unable to load changelog</string>
+    <string name="changelog">ChangeLog</string>
+    <string name="git">git</string>
+    <string name="gplus">gplus</string>
 </resources>
