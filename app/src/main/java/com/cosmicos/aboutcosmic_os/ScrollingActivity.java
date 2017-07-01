@@ -17,9 +17,15 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class ScrollingActivity extends AppCompatActivity {
 
+    private static final String CHANGELOG_PATH = "/system/etc/Changelog.txt";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,6 +189,57 @@ public class ScrollingActivity extends AppCompatActivity {
         }
     }
 
+
+    public static class Changelog extends Fragment {
+
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public Changelog() {
+        }
+
+        public static Changelog newInstance(int sectionNumber) {
+            Changelog fragment = new Changelog();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View changelogView = inflater.inflate(R.layout.changelog, container, false);
+            TextView mChangelog = (TextView) changelogView.findViewById(R.id.changelog);
+            //Implementation to display changelog
+            InputStreamReader inputReader = null;
+            String text = null;
+
+            try {
+                StringBuilder data = new StringBuilder();
+                char tmp[] = new char[2048];
+                int numRead;
+
+                inputReader = new FileReader(CHANGELOG_PATH);
+                while ((numRead = inputReader.read(tmp)) >= 0) {
+                    data.append(tmp, 0, numRead);
+                }
+                text = data.toString();
+            } catch (IOException e) {
+                text = getString(R.string.changelog_error);
+            } finally {
+                try {
+                    if (inputReader != null) {
+                        inputReader.close();
+                    }
+                } catch (IOException ignored) {
+                }
+            }
+            mChangelog.setText(text);
+
+            return changelogView;
+        }
+    }
+
     private class SectionsPagerAdapter extends FragmentPagerAdapter {
         SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -194,6 +251,8 @@ public class ScrollingActivity extends AppCompatActivity {
                 case 0:
                     return AboutFragment.newInstance(position + 1);
                 case 1:
+                    return Changelog.newInstance(position + 1);
+                case 2:
                     return TeamFragment.newInstance(position + 1);
                 default:
                     return null;
@@ -202,8 +261,8 @@ public class ScrollingActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 2 total pages.
-            return 2;
+            // Show 3 total pages.
+            return 3;
         }
 
         @Override
@@ -212,6 +271,8 @@ public class ScrollingActivity extends AppCompatActivity {
                 case 0:
                     return "About";
                 case 1:
+                    return "Changelog";
+                case 2:
                     return "Team";
             }
             return null;

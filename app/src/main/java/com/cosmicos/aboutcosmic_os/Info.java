@@ -24,7 +24,6 @@ public class Info extends AppCompatActivity {
     CoordinatorLayout rootInfo;
 
     String [] device = {"yureka","yuphoria","bullhead", "wbl7511", "op3", "kenzo","a6000","opx","j5","z2plus","cosmic"};
-    private static final String CHANGELOG_PATH = "/system/etc/Changelog.txt";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +32,7 @@ public class Info extends AppCompatActivity {
         setContentView(R.layout.info);
         rootInfo = (CoordinatorLayout) findViewById(R.id.root_info);
         mName = (TextView) findViewById(R.id.name);
-        mChangelog = (TextView)findViewById(R.id.changelog);
+        mChangelog = (TextView) findViewById(R.id.changelog);
         mMainDevice = (TextView) findViewById(R.id.device);
         dp = (de.hdodenhof.circleimageview.CircleImageView) findViewById(R.id.profile_image);
         mGit = (ImageView) findViewById(R.id.git);
@@ -80,7 +79,7 @@ public class Info extends AppCompatActivity {
                 mLink.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.device_7_fab, null)));
             }
             if (mBundle.getInt(aDevice) == 2) {
-                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_6,null));
+                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_6, null));
                 mName.setText(R.string.SagarShah);
                 mMainDevice.setText(R.string.Maintainer_Yuphoria);
                 dp.setImageResource(R.drawable.sagar_team);
@@ -116,7 +115,7 @@ public class Info extends AppCompatActivity {
                 mLink.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.device_6_fab, null)));
             }
             if (mBundle.getInt(aDevice) == 3) {
-                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_1,null));
+                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_1, null));
                 mName.setText(R.string.SidSun);
                 mMainDevice.setText(R.string.Maintainer_Bullhead);
                 dp.setImageResource(R.drawable.bullhead);
@@ -153,7 +152,7 @@ public class Info extends AppCompatActivity {
 
             }
             if (mBundle.getInt(aDevice) == 4) {
-                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_4,null));
+                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_4, null));
                 mName.setText(R.string.IacobIonut);
                 mMainDevice.setText(R.string.Maintainer_wbl7511);
                 dp.setImageResource(R.drawable.lab);
@@ -192,10 +191,10 @@ public class Info extends AppCompatActivity {
             if (mBundle.getInt(aDevice) == 5) {
                 //mName.setText("op3");
                 mLink.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.device_3_fab, null)));
-                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_3,null));
+                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_3, null));
             }
             if (mBundle.getInt(aDevice) == 6) {
-                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_2,null));
+                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_2, null));
                 mName.setText(R.string.RohitSinghNegi);
                 mMainDevice.setText(R.string.Maintainer_Kenzo);
                 dp.setImageResource(R.drawable.kenzo);
@@ -232,7 +231,7 @@ public class Info extends AppCompatActivity {
 
             }
             if (mBundle.getInt(aDevice) == 7) {
-                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_10,null));
+                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_10, null));
                 mName.setText(R.string.MahekThaker);
                 mMainDevice.setText(R.string.Maintainer_A6000);
                 dp.setImageResource(R.drawable.thakur);
@@ -267,7 +266,7 @@ public class Info extends AppCompatActivity {
                 mLink.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.device_10_fab, null)));
             }
             if (mBundle.getInt(aDevice) == 8) {
-                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_9,null));
+                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_9, null));
                 mName.setText(R.string.NicoFranke);
                 mMainDevice.setText(R.string.Maintainer_OPX);
                 dp.setImageResource(R.drawable.nico_team);
@@ -303,11 +302,11 @@ public class Info extends AppCompatActivity {
             }
             if (mBundle.getInt(aDevice) == 9) {
                 //mName.setText("j5");
-                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_5,null));
+                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_5, null));
                 mLink.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.device_5_fab, null)));
             }
             if (mBundle.getInt(aDevice) == 10) {
-                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_8,null));
+                rootInfo.setBackgroundColor(getResources().getColor(R.color.device_8, null));
                 mName.setText(R.string.MahekThaker);
                 mMainDevice.setText(R.string.Maintainer_Z2Plus);
                 dp.setImageResource(R.drawable.thakur);
@@ -377,31 +376,6 @@ public class Info extends AppCompatActivity {
             }
         }
 
-        //Implementation to display changelog
-        InputStreamReader inputReader = null;
-        String text = null;
-
-        try {
-            StringBuilder data = new StringBuilder();
-            char tmp[] = new char[2048];
-            int numRead;
-
-            inputReader = new FileReader(CHANGELOG_PATH);
-            while ((numRead = inputReader.read(tmp)) >= 0) {
-                data.append(tmp, 0, numRead);
-            }
-            text = data.toString();
-        } catch (IOException e) {
-            text = getString(R.string.changelog_error);
-        } finally {
-            try {
-                if (inputReader != null) {
-                    inputReader.close();
-                }
-            } catch (IOException ignored) {
-            }
-        }
-        mChangelog.setText(text);
     }
 
 }
