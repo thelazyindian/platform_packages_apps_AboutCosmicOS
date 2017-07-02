@@ -11,7 +11,7 @@
         android:orientation="vertical">
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="128dp"
+            android:layout_height="144dp"
             card_view:cardElevation="4dp"
             card_view:cardCornerRadius="2dp"
             android:layout_margin="8dp">
@@ -53,7 +53,7 @@
                     android:text="@string/features_header"
                     android:textColor="@android:color/black"
                     android:fontFamily="sans-serif-light"/>
-                <TextView
+                <!--<TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/nkey_features"
@@ -61,7 +61,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/features"/>
+                    android:text="@string/features"/>-->
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -74,44 +74,45 @@
             >
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|center_horizontal"
+                android:layout_margin="8dp">
                 <ImageView
                     android:id="@+id/git_cos"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginStart="32dp"
+                    android:layout_width="@dimen/link_icon"
+                    android:layout_height="@dimen/link_icon"
+                    android:layout_marginEnd="@dimen/git_margin_left"
+                    android:layout_marginTop="@dimen/top_bottom_link_icon"
+                    android:layout_marginBottom="@dimen/top_bottom_link_icon"
+                    android:layout_marginStart="@dimen/link_icon_margin_start"
                     android:src="@drawable/github" />
                 <ImageView
                     android:id="@+id/gplus_cos"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginStart="4dp"
+                    android:layout_width="@dimen/link_icon"
+                    android:layout_height="@dimen/link_icon"
+                    android:layout_marginEnd="@dimen/link_icon_mar_left"
+                    android:layout_marginTop="@dimen/top_bottom_link_icon"
+                    android:layout_marginBottom="@dimen/top_bottom_link_icon"
+                    android:layout_marginStart="@dimen/link_icon_margin_right"
                     android:src="@drawable/gplus" />
                 <ImageView
                     android:id="@+id/telegram_cos"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginStart="4dp"
+                    android:layout_width="@dimen/link_icon"
+                    android:layout_height="@dimen/link_icon"
+                    android:layout_marginEnd="@dimen/link_icon_mar_left"
+                    android:layout_marginTop="@dimen/top_bottom_link_icon"
+                    android:layout_marginBottom="@dimen/top_bottom_link_icon"
+                    android:layout_marginStart="@dimen/link_icon_margin_right"
                     android:src="@drawable/telegram" />
                 <ImageView
                     android:id="@+id/web_cos"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginStart="4dp"
+                    android:layout_width="@dimen/link_icon"
+                    android:layout_height="@dimen/link_icon"
+                    android:layout_marginEnd="@dimen/link_icon_mar_left"
+                    android:layout_marginTop="@dimen/top_bottom_link_icon"
+                    android:layout_marginBottom="@dimen/top_bottom_link_icon"
+                    android:layout_marginStart="@dimen/link_icon_margin_right"
                     android:src="@drawable/internet" />
             </LinearLayout>
         </android.support.v7.widget.CardView>

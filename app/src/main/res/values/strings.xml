@@ -31,7 +31,7 @@
     <string name="toolbar">toolbar</string>
     <string name="features">Clock and Date customisation\n  Network Traffic Indicator\n  Navigation\n  Lock Screen\n  Wakelock blocker\n  And more #explorethecosmos</string>
     <string name="about_header">Explore the galaxy and find what suits you best.</string>
-    <string name="features_header">#Android 7.1.2 Nougat\n #Galaxy Customisations\n #Substratum\n</string>
+    <string name="features_header">#Android 7.1.2 Nougat\n#Galaxy Customisations\n#Substratum\n</string>
     <string name="nkey_features">Key Features</string>
     <string name="link_to_rom">Link To ROM</string>
     <string name="sagar_shah">Sagar Shah</string>
